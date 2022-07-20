@@ -30,9 +30,9 @@ def index_view():
 def predict():
     if request.method == 'POST':
         image = request.files['my_image']
-        image_path = 'image.filename'
-        #image.save(image_path)
-        image = np.array(Image.open(io.BytesIO(image_path)))
+        basepath = os.path.dirname(__file__)
+        image_path = os.path.join(basepath, 'uploads', secure_filename(image.filename))
+        image.save(image_path)
         img = load_img(image_path, target_size=(150, 150))
         x = img_to_array(img)
         x = np.expand_dims(x, axis=0)
