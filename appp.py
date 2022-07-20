@@ -10,11 +10,6 @@ import os
 from keras.utils import load_img, img_to_array
 from werkzeug.utils import secure_filename
 sys.path.append(os.path.abspath("./model"))
-
-'''def get_model():
-    global graph, model
-    model = load_model('model.h5')
-    print("model loaded!")'''
 global graph, model
 
 
@@ -39,10 +34,10 @@ def predict():
         image_tensor = np.vstack([x])
         classes = model.predict(image_tensor)
         print(classes[0])
-        if classes[0][0] > 70:
+        if classes[0][0] > 50:
             response = 'This image is a cat'
         else:
-            classes[0][1] > 70
+            classes[0][1] > 50
             response = 'This image is a dog'
     return render_template("index.html", prediction=response, image=image)
 
