@@ -21,16 +21,16 @@ global graph, model
 app = Flask(__name__, template_folder='Template')
 model = load_model('model.h5')
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index_view():
     return render_template("index.html")
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/submit', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
         image = request.files['my_image']
-        basepath = os.path.dirname(__file__)
+        basepath = os.path.dirname(__my_image__)
         image_path = os.path.join(basepath, 'uploads', secure_filename(image.filename))
         image.save(image_path)
         img = load_img(image_path, target_size=(150, 150))
