@@ -30,13 +30,10 @@ def index_view():
 def predict():
     if request.method == 'POST':
         image = request.files['my_image']
-        #image_path =image.filename
-        #image.save(image_path)
-
+        image_path =image.filename
+        image.save(image_path)
         img = load_img(image, target_size=(150, 150))
         x = img_to_array(img)
-        """ x = x[:, :, 0]
-        x = x.reshape(1, 150, 150, 3)"""
         x = np.expand_dims(x, axis=0)
         image_tensor = np.vstack([x])
         classes = model.predict(image_tensor)
