@@ -29,8 +29,8 @@ def index_view():
 @app.route('/submit', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
-        image = request.files['my_image']
-        basepath = os.path.dirname(__my_image__)
+        image = request.files['file']
+        basepath = os.path.dirname(__file__)
         image_path = os.path.join(basepath, 'uploads', secure_filename(image.filename))
         image.save(image_path)
         img = load_img(image_path, target_size=(150, 150))
