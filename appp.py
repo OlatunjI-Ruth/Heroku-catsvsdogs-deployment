@@ -10,17 +10,16 @@ import os
 from keras.utils import load_img, img_to_array
 from werkzeug.utils import secure_filename
 sys.path.append(os.path.abspath("./model"))
-from loader import *
 
 '''def get_model():
     global graph, model
     model = load_model('model.h5')
     print("model loaded!")'''
 global graph, model
-model = init()
+
 
 app = Flask(__name__, template_folder='Template')
-
+model = load_model('model.h5')
 
 @app.route('/')
 def index_view():
