@@ -29,7 +29,7 @@ def predict():
         basepath = os.path.dirname(__file__)
         image_path = os.path.join(basepath, secure_filename(image.filename))
         image.save(image_path)
-        img = load_img(image_path, target_size=(224, 224))
+        img = load_img(image_path, target_size=(300, 300))
         x = img_to_array(img)
         x=x/225
         x = np.expand_dims(x, axis=0)
