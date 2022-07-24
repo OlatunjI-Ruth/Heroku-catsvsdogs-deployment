@@ -33,8 +33,8 @@ def predict():
         x = img_to_array(img)
         x=x/225
         x = np.expand_dims(x, axis=0)
-        #image_tensor = np.vstack([x])
-        classes = model.predict(x)
+        image_tensor = np.vstack([x])
+        classes = model.predict(image_tensor)
         classes = np.argmax(classes, axis=1)
         #print(classes * 10)
         if classes==0:
