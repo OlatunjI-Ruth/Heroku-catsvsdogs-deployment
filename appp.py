@@ -39,9 +39,10 @@ def predict():
         #print(classes * 10)
         if classes==0:
             response = 'This image is a cat'
-        else:
-            #classes[0][1] > 50
+        elif classes==1:
             response = 'This image is a dog'
+        else:
+            response = 'I no sure o, but e be like human being'
     return render_template("index.html", prediction=response, image=image)
 
 
