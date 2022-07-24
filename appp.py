@@ -15,7 +15,7 @@ global graph, model
 
 
 app = Flask(__name__, template_folder='Template')
-model = load_model('model_mobilnet.h5')
+model = load_model('model.h5')
 
 @app.route('/', methods=['GET'])
 def index_view():
